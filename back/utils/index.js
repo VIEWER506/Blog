@@ -1,2 +1,3 @@
-import handleValidationErrors from "./handleValidationErrors.js"
-import checkAuth from "./CheckAuth.js"
+export {default as handleValidationErrors} from "./handleValidationErrors.js"
+export {default as checkAuth} from "./CheckAuth.js"
+

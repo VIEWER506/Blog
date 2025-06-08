@@ -24,6 +24,7 @@ mongoose.connect("mongodb+srv://denis:123@cluster0.uwq7n2z.mongodb.net/blog?retr
 .catch((err) => console.log("error", err))
 
 app.use(express.json())
+app.use(cors())
 app.use("/uploads", express.static("uploads"))
 
 app.post("/log", loginValidation,handleValidationErrors, userController.login)
