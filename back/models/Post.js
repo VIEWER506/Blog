@@ -8,7 +8,6 @@ const PostSchema = mongoose.Schema({
     text:{
         type: String,
         required: true, 
-        unique: true,
     },
     tags:{
         type: Array,
@@ -16,7 +15,7 @@ const PostSchema = mongoose.Schema({
     },
     viewsCount:{
         type: Number,
-        dafeult: 0
+        dafault: 0
     },
     user:{
         type: mongoose.Schema.Types.ObjectId,

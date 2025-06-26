@@ -4,7 +4,7 @@ import multer from "multer"
 import {registerValidation,loginValidation, postCreateValidation} from "./validations.js"
 import {checkAuth, handleValidationErrors} from "./utils/index.js"
 import {postController, userController}  from "./Controllers/index.js"
-
+import cors from "cors"
 
 
 const app = express()
@@ -34,10 +34,10 @@ app.get("/auth/me", checkAuth, userController.getMe)
 app.post("/upload", checkAuth, upload.single("file"), (req, res) =>{
     console.log(req.file)
     res.json({
-        url: `/upload/${req.file.originalname}`
+        url: `/uploads/${req.file.originalname}`
     })
 })
-
+app.get("/tags", postController.getLastTags)
 app.get("/posts", postController.getAll)
 app.get("/posts/:id", postController.getOne)
 app.post("/posts", checkAuth, postCreateValidation,handleValidationErrors, postController.create);

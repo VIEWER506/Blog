@@ -13,6 +13,6 @@ export const registerValidation = [
 export const postCreateValidation = [
     body("title", "Введите заголовок статьи").isLength({min: 3}).isString(),
     body("text","Введите текст статьи").isLength({min: 5}).isString(),
-    body("tags","Неверный формат тегов").optional().isString(),
+    body("tags").optional({ nullable: true }).isArray().withMessage("Tags должен быть массивом").custom(arr => arr.every(tag => typeof tag === 'string')).withMessage("Каждый тег должен быть строкой"),
     body("imageUrl","Неверная ссылка на изображение").optional().isString()
 ]
