@@ -62,7 +62,7 @@ export const login = async(req, res) =>{
     },
     "secret123",
     {
-        expiresIn: "30d"
+        expiresIn: "50d"
     })
     const {passwordHash, ...UseData} = user._doc
 
@@ -93,3 +93,22 @@ export const getMe = async(req, res) => {
         
     }
 }
+export const addAvatar = async(req, res) => {
+    console.log(req.body)
+    try {
+        const userId = req.body._id
+        await UserModel.updateOne({
+          _id: userId
+        },{
+            avatarUrl:req.body.avatarUrl
+        });
+        res.json({
+          succes: true
+        })
+      } catch (error) {
+        console.log(error)
+        res.status(500).json({
+                    message: "Не удалось установить аватар", error
+                })
+      }
+    } 

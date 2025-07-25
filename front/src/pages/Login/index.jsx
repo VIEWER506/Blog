@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {fetchAuthMe, fetchUserData, selectIsAuth} from "../../redux/slices/auth"
 import {Navigate, useNavigate} from "react-router-dom"
 
+
+
 export const Login = () => {
   const isAuth = useSelector(selectIsAuth)
   const dispatch = useDispatch()
@@ -26,13 +28,13 @@ export const Login = () => {
       alert("Не удалось авторизоваться")
     }
     if("token" in data.payload){
+      console.log(data)
       window.localStorage.setItem("token", data.payload.token)
     }
   }
   if(isAuth){
     return <Navigate to="/"/>
   }
-  console.log("auth", isAuth)
   return (
     <Paper classes={{ root: styles.root }}>
       <Typography classes={{ root: styles.title }} variant="h5">
@@ -54,7 +56,7 @@ export const Login = () => {
         error={Boolean(errors.password?.message)}
         helperText={errors.password?.message}
         {... register("password", {required: "Укажите пароль"})}/>
-        <Button type="submit" size="large" variant="contained" fullWidth>
+       <Button type="submit" size="large" variant="contained" fullWidth>
           Войти
         </Button>
       </form>

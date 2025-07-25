@@ -5,11 +5,17 @@ import styles from './Header.module.scss';
 import Container from '@mui/material/Container';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout, selectIsAuth } from '../../redux/slices/auth';
+import {useEffect} from "react"
 
 export const Header = () => {
   const dispatch = useDispatch()
   const isAuth = useSelector(selectIsAuth)
-
+  const id = useSelector(state => state.auth.data?.UseData._id)
+  useEffect(() => {
+    console.log(id)
+  }, [id])
+  console.log(isAuth)
+  // console.log("adsfsdf",id)
   const onClickLogout = () => {
     if(window.confirm("Вы точно хотите выйти"))
     dispatch(logout())
@@ -32,6 +38,9 @@ export const Header = () => {
                 <Button onClick={onClickLogout} variant="contained" color="error">
                   Выйти
                 </Button>
+                <Link to={`/profile/${id}`}>
+                  <Button variant="contained">Профиль</Button>
+                </Link>
               </>
             ) : (
               <>

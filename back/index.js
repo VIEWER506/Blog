@@ -17,7 +17,19 @@ const storage = multer.diskStorage({
         cb(null, file.originalname)
     }
 })
+
+const storageAvatar = multer.diskStorage({
+    destination: (_, __, cb) =>{
+        cb(null, "uploads/avatar")
+    },
+    filename:(_,file,cb) =>{
+        cb(null, file.originalname)
+    }
+})
+
+
 const upload = multer({storage})
+
 
 mongoose.connect("mongodb+srv://denis:123@cluster0.uwq7n2z.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0"
 ).then(() => console.log("ok"))
@@ -27,9 +39,12 @@ app.use(express.json())
 app.use(cors())
 app.use("/uploads", express.static("uploads"))
 
+
 app.post("/log", loginValidation,handleValidationErrors, userController.login)
 app.post("/reg", registerValidation,handleValidationErrors, userController.register)
 app.get("/auth/me", checkAuth, userController.getMe)
+app.post("/add/avatar", checkAuth, userController.addAvatar)
+
 
 app.post("/upload", checkAuth, upload.single("file"), (req, res) =>{
     console.log(req.file)

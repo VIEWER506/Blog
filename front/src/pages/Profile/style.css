@@ -1,0 +1,117 @@
+.header{
+   margin-top: 150px;
+  width: 1150px;
+  height: 130px;
+   border-radius: 20px;
+  background-color: aliceblue; 
+  position: relative;
+}
+.avatar{
+  position: absolute;
+  margin-top: -70px;
+  margin-left: 100px;
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  text-align: center;
+}
+.avatar_photo{
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  object-fit: cover;
+}
+.avatar:hover{
+  cursor: pointer;
+}
+.add_photo{
+  opacity: 0;
+}
+.avatar:hover .add_photo{
+  opacity: 1;
+  transition:  opacity 1s ease;
+  width: 100px;
+  height: 50px;
+  margin-left: 7px;
+  margin-top: -7px;
+}
+.name{
+  position: absolute;
+  margin-bottom: 70px;
+  width: 300px;
+  height: 50px;
+  margin-left: 300px;
+  font-size: 30px;
+  font-weight: 900;
+  display: inline-block;
+}
+.info{
+  position: absolute;
+  margin-left: 300px;
+  margin-top: 80px;
+  user-select: none;
+  width: 230px;
+  color: #4361ee;
+
+}
+.info:hover{
+  cursor: pointer;
+}
+.update_profile{
+  position: absolute;
+  margin-top: 45px;
+  margin-left: 800px;
+  border: none;
+  font-weight: 700;
+  color: #4361ee;
+  font-size: 15px;
+  background-color: rgb(219, 225, 228);
+  border-radius: 7px;
+  height: 30px;
+}
+.update_profile:hover{
+  background-color: rgb(199, 201, 202);
+  transition: 0.5s;
+  cursor: pointer;
+}
+.all_photo {
+  background-color: aliceblue;
+  width: 610px;
+  height: 300px;
+  border-radius: 20px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  padding: 20px; 
+}
+
+.all_photo_title {
+  margin: 0; 
+}
+
+.all_photo_3 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; 
+  align-self: flex-end; 
+  margin-top: auto;
+}
+.images {
+  width: 180px !important;
+  height: 180px !important;
+  object-fit: cover !important;
+  aspect-ratio: 1/1 !important;
+  border-radius: 20px;
+}
+.show_more{
+  margin-left: 220px;
+  user-select: none;
+}
+.show_more:hover{
+  cursor: pointer;
+}
+.images{
+  width: '100px';
+  height: '100px'; 
+}

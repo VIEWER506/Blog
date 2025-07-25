@@ -11,6 +11,10 @@ export const FullPost = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    console.log(id)
+  }, [id])
+  useEffect(() => {
+    if(!id){return}
     axios.get(`/posts/${id}`).then((res) => {setData(res.data);
       setIsLoading(false)
     }).catch((err) => {
@@ -18,6 +22,7 @@ export const FullPost = () => {
       alert("Ошибка получения статьи")
     }) 
   }, [])
+  
   if(isLoading){
     return <Post isLoading={isLoading}/>
   }

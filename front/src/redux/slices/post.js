@@ -19,6 +19,10 @@ const initialState = {
     tags:{
         items: [],
         status: "loading"
+    },
+    avatars:{
+        items: [],
+        status: "loading"
     }
 }
 

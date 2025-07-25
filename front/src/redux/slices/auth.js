@@ -5,6 +5,7 @@ import { Logout } from "@mui/icons-material";
 
 export const fetchUserData = createAsyncThunk("auth/fetchUserData", async (params) => {
     const {data} = await axios.post("/log", params);
+    
     return data
 })
 export const fetchAuthMe = createAsyncThunk("auth/fetchAuthMe", async () => {

@@ -9,20 +9,20 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts, fetchTags } from '../redux/slices/post';
 
-
 export const Home = () => {
-  const dispatch = useDispatch()
-  const {posts, tags} = useSelector(state => state.posts)
-  const userData = useSelector(state => state.auth.data)
-  const isPostsLoading = posts.status === "loading"
-  const isTagsLoading = tags.status === "loading"
-
-useEffect(() => {
-dispatch(fetchPosts())
-dispatch(fetchTags())
-}, [dispatch]);
+  const dispatch = useDispatch();
+  const { posts, tags } = useSelector(state => state.posts);
+  const userData = useSelector(state => state.auth.data); 
   console.log(userData)
-  
+  console.log(posts)
+  const isPostsLoading = posts.status === "loading";
+  const isTagsLoading = tags.status === "loading";
+
+  useEffect(() => {
+    dispatch(fetchPosts());
+    dispatch(fetchTags());
+  }, [dispatch]);
+
   return (
     <>
       <Tabs style={{ marginBottom: 15 }} value={0} aria-label="basic tabs example">
@@ -31,39 +31,32 @@ dispatch(fetchTags())
       </Tabs>
       <Grid container spacing={4}>
         <Grid xs={8} item>
-        {(isPostsLoading ? [...Array(5)] : posts.items).map((obj, index) => {
-  if (isPostsLoading) {
-    return <Post isLoading={true} key={index} />;
-  }
-  return (
-  <>
-    {console.log("OBJ:", obj.user._id)}
-    {console.log("userData:", userData.UseData._id)}
-    {obj?.user?._id && (
-      <Post
-        key={index}
-        id={obj._id}
-        title={obj.title}
-        imageUrl={obj.imageUrl ? `http://localhost:4444${obj.imageUrl}` : ""}
-        user={obj.user}
-        createdAt={obj.createdAt}
-        viewsCount={obj.viewsCount}
-        commentsCount={1000000}
-        tags={obj.tags}
-        isEditable={userData.UseData._id=== obj.user._id}
-      />
-    )}
-  </>
-);
-
-})}
+          {(isPostsLoading ? [...Array(5)] : posts.items).map((obj, index) => {
+            if (isPostsLoading) {
+              return <Post isLoading={true} key={index} />;
+            }
+            
+            return (
+              <Post
+                key={obj._id || index}
+                id={obj._id}
+                title={obj.title}
+                imageUrl={obj.imageUrl ? `http://localhost:4444${obj.imageUrl}` : ""}
+                user={obj.user}
+                createdAt={obj.createdAt}
+                viewsCount={obj.viewsCount}
+                commentsCount={obj.commentsCount || 0}
+                tags={obj.tags}
+                isEditable={(userData && userData.UseData._id === obj.user._id)}
+              />
+            );
+          })}
         </Grid>
         <Grid xs={4} item>
-         <TagsBlock 
-  items={isTagsLoading ? [] : tags.items} 
-  isLoading={isTagsLoading}
-/>
-        
+          <TagsBlock 
+            items={tags.items || []} 
+            isLoading={isTagsLoading}
+          />
           <CommentsBlock
             items={[
               {
@@ -72,13 +65,6 @@ dispatch(fetchTags())
                   avatarUrl: 'https://mui.com/static/images/avatar/1.jpg',
                 },
                 text: 'Это тестовый комментарий',
-              },
-              {
-                user: {
-                  fullName: 'Иван Иванов',
-                  avatarUrl: 'https://mui.com/static/images/avatar/2.jpg',
-                },
-                text: 'When displaying three lines or more, the avatar is not aligned at the top. You should set the prop to align the avatar at the top',
               },
             ]}
             isLoading={false}
