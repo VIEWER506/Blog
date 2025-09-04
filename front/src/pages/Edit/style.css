@@ -1,0 +1,51 @@
+.header_edit{
+    width: 800px;
+    margin: auto;
+    height: 100%;
+    background-color: aliceblue;
+    margin-top: 100px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.about_me{
+    width: 350px;
+    height: 200px;
+    border: none;
+    border-radius: 20px;
+    padding-top: 7px;
+    resize: none;
+}
+.text{
+    font-weight: 700;
+    margin-top: 0px;
+    margin-left: 20px;
+}
+.remove{
+    margin-left: 25px;
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+.remove2{
+    margin-left: 65px;
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+.save{
+    margin-top: 40px;
+    width: 150px;
+    height: 50px;
+    margin-left: 330px;
+    border: none;
+    background-color: #4361ee;
+    border-radius: 20px;
+    color: white;
+    font-weight: 700;
+}
+.save:hover{
+    cursor: pointer;
+    background-color: #2d47be;
+    transition: 300ms;
+}

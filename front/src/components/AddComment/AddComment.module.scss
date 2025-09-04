@@ -1,0 +1,52 @@
+.root {
+  margin-top: 20px;
+}
+
+.commentForm {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.commentsList {
+  margin-top: 20px;
+}
+
+.commentItem {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.commentAvatar {
+  width: 40px;
+  height: 40px;
+}
+
+.commentContent {
+  flex-grow: 1;
+}
+
+.commentHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+.commentAuthor {
+  font-weight: 500;
+}
+
+.commentDate {
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.commentText {
+  margin: 0;
+  white-space: pre-wrap;
+}
